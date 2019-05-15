@@ -1,5 +1,5 @@
 ##################################################################################################################
-#This RScript creates batch files using a template. These batch scripts were run on RAMCC Summit Supercomputer 
+#This RScript creates batch files using a template. These batch scripts were run on RMACC Summit Supercomputer 
 #Sunetra Das
 ##################################################################################################################
 #Read in the Template
@@ -72,7 +72,7 @@ for(i in seq(1,numl,by=2)){
   #Substituting project name in the template
   x.mod = gsub("project.id", project.id, x.mod) 
   
-  #Output of the substituted template as a batch script for running on RAMCC Summit Supercomputer
+  #Output of the substituted template as a batch script for running on RMACC Summit Supercomputer
     b=paste0(foldername , fname.code, fexten, sep="")
     c=paste0(fname.code, fexten)
     cat(x.mod,file=b,sep="\n")
