@@ -1,0 +1,62 @@
+#!/bin/bash
+#SBATCH -J BWAfname.code
+#SBATCH -p sgpu
+#SBATCH --qos Normal
+#SBATCH -t 24:00:00
+#SBATCH -N 1
+#SBATCH --output=fname.code-S3-S8.out
+
+module load jdk
+
+#insert.date
+#project.id
+
+#S3_Running BWA --- fname.code
+
+bwa mem -M -t 12 \
+-R '@RG\tID:fname.id\tSM:fname.code\tPL:illumina\tLB:lib.code\tPU:fname.code.rg.lane' \
+/projects/sdas@colostate.edu/CanFamDatabases/DogGenome/CanFam3 \
+../Trimfiles/fnameR1 \
+../Trimfiles/fnameR2 > ../sam/fname.code_BWA.sam
+
+
+#S4_Sort SAM for marking duplicates --- fname.code
+
+java -jar ~/picard.jar SortSam \
+      TMP_DIR=../bam/tempfname.code \
+      I=../sam/fname.code_BWA.sam \
+      O=../sam/fname.code_BWA_sorted.sam \
+      SORT_ORDER=coordinate
+
+#S4a_Removing the unsorted sam file
+
+rm ../sam/fname.code_BWA.sam
+
+#S5_Mark Duplicates --- fname.code 
+
+java -jar ~/picard.jar MarkDuplicates \
+ 	TMP_DIR=../bam/tempfname.code \
+ 	I=../sam/fname.code_BWA_sorted.sam \
+ 	O=../bam/fname.code_dedup.bam \
+ 	M=../bam/fname.code_marked_dup_metrics.txt
+
+#S6_Index bam file --- fname.code
+
+samtools index ../bam/fname.code_dedup.bam
+
+#S7_Recalibrate Base --- fname.code
+
+gatk BaseRecalibrator \
+   -R /projects/sdas\@colostate.edu/CanFamDatabases/DogGenome/Canis_familiaris.CanFam3.1.dna.fa  \
+   -I ../bam/fname.code_dedup.bam \
+   --known-sites /projects/sdas\@colostate.edu/CanFamDatabases/Canis_familiaris_V89.vcf \
+   -O ../bam/fname.code_recal_data.grp
+
+#S8_Print bam file with recalibrated bases --- fname.code
+
+gatk ApplyBQSR \
+   -R /projects/sdas\@colostate.edu/CanFamDatabases/DogGenome/Canis_familiaris.CanFam3.1.dna.fa \
+   -I ../bam/fname.code_dedup.bam \
+   --bqsr-recal-file  ../bam/fname.code_recal_data.grp \
+   -O ../BAM/fname.code_recal_reads.bam
+

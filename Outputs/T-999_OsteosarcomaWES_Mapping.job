@@ -1,0 +1,62 @@
+#!/bin/bash
+#SBATCH -J BWAT-999
+#SBATCH -p sgpu
+#SBATCH --qos Normal
+#SBATCH -t 24:00:00
+#SBATCH -N 1
+#SBATCH --output=T-999-S3-S8.out
+
+module load jdk
+
+#2019-05-15
+#OsteosarcomaWES
+
+#S3_Running BWA --- T-999
+
+bwa mem -M -t 12 \
+-R '@RG\tID:@A00405\tSM:T-999\tPL:illumina\tLB:lib4\tPU:T-999.AGCAGGAA.1' \
+/projects/sdas@colostate.edu/CanFamDatabases/DogGenome/CanFam3 \
+../Trimfiles/T999_R1_paired.fastq.gz \
+../Trimfiles/T999_R2_paired.fastq.gz > ../sam/T-999_BWA.sam
+
+
+#S4_Sort SAM for marking duplicates --- T-999
+
+java -jar ~/picard.jar SortSam \
+      TMP_DIR=../bam/tempT-999 \
+      I=../sam/T-999_BWA.sam \
+      O=../sam/T-999_BWA_sorted.sam \
+      SORT_ORDER=coordinate
+
+#S4a_Removing the unsorted sam file
+
+rm ../sam/T-999_BWA.sam
+
+#S5_Mark Duplicates --- T-999 
+
+java -jar ~/picard.jar MarkDuplicates \
+ 	TMP_DIR=../bam/tempT-999 \
+ 	I=../sam/T-999_BWA_sorted.sam \
+ 	O=../bam/T-999_dedup.bam \
+ 	M=../bam/T-999_marked_dup_metrics.txt
+
+#S6_Index bam file --- T-999
+
+samtools index ../bam/T-999_dedup.bam
+
+#S7_Recalibrate Base --- T-999
+
+gatk BaseRecalibrator \
+   -R /projects/sdas\@colostate.edu/CanFamDatabases/DogGenome/Canis_familiaris.CanFam3.1.dna.fa  \
+   -I ../bam/T-999_dedup.bam \
+   --known-sites /projects/sdas\@colostate.edu/CanFamDatabases/Canis_familiaris_V89.vcf \
+   -O ../bam/T-999_recal_data.grp
+
+#S8_Print bam file with recalibrated bases --- T-999
+
+gatk ApplyBQSR \
+   -R /projects/sdas\@colostate.edu/CanFamDatabases/DogGenome/Canis_familiaris.CanFam3.1.dna.fa \
+   -I ../bam/T-999_dedup.bam \
+   --bqsr-recal-file  ../bam/T-999_recal_data.grp \
+   -O ../BAM/T-999_recal_reads.bam
+

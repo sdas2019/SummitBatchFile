@@ -1,0 +1,55 @@
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1023_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:5538:1000 1:N:0:CGGATTGC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1032_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:6370:1000 1:N:0:CATACCAA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1087_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1036:1000 1:N:0:ATAGCGAC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1096_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1181:1000 1:N:0:ACTATGCA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1166_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:2193:1000 1:N:0:GCGAGTAA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1192_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:3875:1000 1:N:0:ACCTCCAA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1246_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:2392:1000 1:N:0:CTGGCATA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1247_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1597:1000 1:N:0:ACCACTGT
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T1272_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:3369:1000 1:N:0:GCCACATA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T134_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:2645:1000 1:N:0:ATTGGCTC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T149_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:3983:1000 1:N:0:GACTAGTA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T153_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:5032:1000 1:N:0:GCCAAGAC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T25E_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:4960:1000 1:N:0:TATCAGCA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T276_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:2248:1000 1:N:0:CACTTCGA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T29C_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1380:1000 1:N:0:ATCATTCC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T343_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1705:1000 1:N:0:AACGTGAT
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T346_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:4273:1000 1:N:0:GAATCTGA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T399_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:2067:1000 1:N:0:AGATGTAC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T424_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1994:1000 1:N:0:GACAGTGC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T458_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:2175:1000 1:N:0:AAGGACAC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T554_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1398:1000 1:N:0:GATAGACA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T74_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:4182:1000 1:N:0:CCATCCTC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T843_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1163:1000 1:N:0:CGAACTTA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T856_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1108:1000 1:N:0:GAGTTAGC
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T907_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:3495:1000 1:N:0:AAACATCG
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T992_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1633:1000 1:N:0:GAGCTGAA
+[sdas@colostate.edu@shas0136 Trimfiles]$ zcat T999_R1_paired.fastq.gz | head -n 1
+@A00405:11:H3HLYDSXX:1:1101:1325:1000 1:N:0:AGCAGGAA
+

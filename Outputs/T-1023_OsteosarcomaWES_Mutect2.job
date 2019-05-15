@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH -J M2_T-1023
+#SBATCH -p shas
+#SBATCH --qos Normal
+#SBATCH -t 24:00:00
+#SBATCH -N 1
+#SBATCH --mem=40000
+#SBATCH --output=T-1023.out
+
+#insert.date
+
+#Running Mutect2 - using Panel of normals and germline resource
+
+module load jdk
+
+gatk --java-options '-DGATK_STACKTRACE_ON_USER_EXCEPTION=true' \
+Mutect2 \
+-R /projects/sdas\@colostate.edu/CanFamDatabases/DogGenome/Canis_familiaris.CanFam3.1.dna.fa \
+-I ../BAM/T-1023_recal_reads.bam \
+-I ../../Normals/BAM/N-1023_recal_reads.bam \
+-tumor T-1023 \
+-normal N-1023 \
+-pon /projects/sdas\@colostate.edu/Germline/2019.02.11_PON_gatk_V2.vcf.gz \
+--germline-resource /projects/sdas\@colostate.edu/Germline/722g.990.SNP.INDEL.8Cols.vcf.gz \
+--af-of-alleles-not-in-resource 0.0000025 \
+--disable-read-filter MateOnSameContigOrNoMappedMateReadFilter \
+-O ../Mutect2/T-1023_somatic_m2-GR.vcf.gz \
+-bamout ../Mutect2/BAM/T-1023_tumor_normal_m2-GR.bam 
